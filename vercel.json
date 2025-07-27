@@ -2,5 +2,20 @@
   "version": 2,
   "buildCommand": "cd frontend && npm run build",
   "outputDirectory": "frontend/build",
-  "installCommand": "cd frontend && npm install"
+  "installCommand": "cd frontend && npm install",
+  "functions": {
+    "backend/api/main.py": {
+      "runtime": "python3.9"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/backend/api/main.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/build/$1"
+    }
+  ]
 }
