@@ -157,6 +157,7 @@ def ai_chat(request: ChatMessage):
     
     return {"response": "I can help you with fuel efficiency, maintenance schedules, cost optimization, and fleet analytics. Could you be more specific about what you'd like to know?"}
 
-# Handler for Vercel
-def handler(request, response):
-    return app(request)
+# Handler for Vercel - this is the entry point for serverless functions
+from mangum import Mangum
+
+handler = Mangum(app)
