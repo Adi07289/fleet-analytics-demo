@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 import json
 import random
 from typing import List, Dict, Any
+from mangum import Mangum
 
 app = FastAPI(title="Fleet Analytics API", version="1.0.0")
 
@@ -158,6 +159,4 @@ def ai_chat(request: ChatMessage):
     return {"response": "I can help you with fuel efficiency, maintenance schedules, cost optimization, and fleet analytics. Could you be more specific about what you'd like to know?"}
 
 # Handler for Vercel - this is the entry point for serverless functions
-from mangum import Mangum
-
 handler = Mangum(app)
